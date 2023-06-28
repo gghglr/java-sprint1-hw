@@ -15,18 +15,18 @@ public class StepTracker {
         System.out.println("Введите номер месяца");
         int monthNum = scanner.nextInt();
         if (monthNum < 1 || monthNum > 12){
-            System.out.println("Вы ввели неккоректный месяц");
+            System.out.println("Вы ввели некорректный месяц");
         }
         System.out.println("Введите день от 1 до 30 (включительно)");
         int dayNum = scanner.nextInt();
         if(dayNum < 1 || dayNum > 30){
-            System.out.println("Вы ввели неккоректный день");
+            System.out.println("Вы ввели некорректный день");
         }
 
         System.out.println("Введите количество шагов");
         int stepNum = scanner.nextInt();
         if(stepNum < 0){
-            System.out.println("Вы ввели неккоректное количество шагов");
+            System.out.println("Вы ввели некорректное количество шагов: отрицательное число");
         }
 
         // Получение соответствующего объекта MonthData из массива
@@ -38,7 +38,7 @@ public class StepTracker {
         System.out.println("Введите цель шагов");
         int stepGoal = scanner.nextInt();
         if(stepGoal <= 0 ){
-            System.out.println("Вы ввели некорректную цель");
+            System.out.println("Вы ввели некорректную цель: ноль или отрицательное число");
         }
         else {
             goalByStepsPerDay = stepGoal;
@@ -48,7 +48,7 @@ public class StepTracker {
     void  printStatistic(){
         System.out.println("Введите число месяца");
         int monthNum = scanner.nextInt();
-        if (monthNum < 1 && monthNum >= 12){
+        if (monthNum < 1 || monthNum >= 12){
             System.out.println("Вы ввели неккоректный месяц");
         }
         monthToData[monthNum - 1].printDaysAndStepsFromMonth();
@@ -57,7 +57,7 @@ public class StepTracker {
         System.out.println("Среднее количесвто шагов за месяц: " + monthToData[monthNum - 1].sumStepsFromMonth()/30);
         System.out.println("Пройденное расстояние в км: " + conv.convertToKm(monthToData[monthNum - 1].sumStepsFromMonth()));
         System.out.println("Количество сожженых калорий: " + conv.convertStepsToKilocalories(monthToData[monthNum - 1].sumStepsFromMonth()));
-        System.out.println("Вывод лучшей серии: " + monthToData[monthNum - 1].bestSeries(goalByStepsPerDay) + "дней");
+        System.out.println("Вывод лучшей серии: " + monthToData[monthNum - 1].bestSeries(goalByStepsPerDay) + " дней");
 
     }
 }
