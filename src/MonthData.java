@@ -29,8 +29,11 @@ public class MonthData {
             if(days[i] >= goalByStepsPerDay){
                 currentSeries = currentSeries + 1;
                 if(currentSeries > finalSeries){
-                    finalSeries = finalSeries + currentSeries;
+                    finalSeries = currentSeries;
                 }
+            }
+            else if(days[i] == 0){
+                currentSeries = 0;
             }
         }
         return finalSeries;
